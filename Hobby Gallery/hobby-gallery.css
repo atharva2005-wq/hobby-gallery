@@ -1,65 +1,137 @@
-/* Reset some default spacing */
+/* Reset and base styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
 body {
   font-family: 'Segoe UI', sans-serif;
   line-height: 1.6;
-  background: #f9f9f9;
+  background: linear-gradient(to right, #fceabb, #f8b500);
   color: #333;
   padding: 20px;
+  max-width: 1200px;
+  margin: auto;
 }
 
+/* Header styling */
 header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
+header h1 {
+  font-size: 3rem;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #444;
+}
+
+/* Hobby gallery grid */
 .hobby-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 30px;
 }
 
+/* Hobby card */
 .hobby {
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   padding: 20px;
-  transition: transform 0.3s ease;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.hobby:hover {
-  transform: translateY(-5px);
+.hobby::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, #f8b50022, transparent 60%);
+  transform: rotate(25deg);
+  z-index: 0;
 }
 
 .hobby img {
   width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  transition: transform 0.3s;
+  height: 50%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.hobby h2 {
+  font-size: 1.5rem;
+  color: #ff6f00;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.hobby p {
+  font-size: 1rem;
+  color: #555;
+  position: relative;
+  z-index: 1;
+}
+
+/* Hover animation */
+.hobby:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .hobby img:hover {
   transform: scale(1.05);
 }
 
-.hobby h2 {
-  margin-top: 15px;
-  color: #007BFF;
-}
-
+/* Optional link style if needed */
 .hobby a {
   display: inline-block;
-  margin-top: 10px;
-  color: #0056b3;
-  text-decoration: none;
+  margin-top: 12px;
+  color: #d35400;
   font-weight: bold;
+  text-decoration: none;
+  z-index: 1;
+  position: relative;
 }
 
 .hobby a:hover {
   text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  .hobby h2 {
+    font-size: 1.3rem;
+  }
+
+  .hobby p {
+    font-size: 0.95rem;
+  }
 }
